@@ -91,28 +91,51 @@ tr:nth-child(odd) {
   border-radius: 10px;
 }
 /*For ROTATION*/
+#ROTUND-container {
+  width: 800px;           /* set a fixed width */
+  height: 600px;          /* set a fixed height */
+  margin: 0 auto;         /* center the container */
+  position: relative;
+  overflow: hidden;       /* hides overflow from image scaling */
+  border: 1px solid black;
+}
 #ROTUND {
   animation: rotate 2s infinite linear;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
   transform-origin: center center; /* Rotate around the center */
 }
 #ROTUND img {
   display: block;              /* removes inline quirks */
-  margin: 0 auto;              /* centers the image */
+  width: 100%;              /* centers the image */
 }
 @keyframes rotate {
-  0%/*Refers to stage of rotation*/ {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(359deg) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-359deg) scale(0.5);
+  }
+}
+/*@keyframes rotate {
+  0% Refers to stage of rotation {
     transform: rotate(0deg);
     width: 5%;
   }
   50% {
-    transform: rotate(359deg/*Refers to how far it rotates in total*/);
+    transform: rotate(359deg Refers to how far it rotates in total);
     width: 60%;
   }
   100% {
     transform: rotate(-359deg);
     width: 5%;
   }
-}
+}*/
 </style>
 <!--dje-->
   </head>
@@ -422,8 +445,10 @@ function Printer2() {
 </map>
 <!--https://www.image-map.net/-->
 
-<div id="ROTUND">
-<img src=".\Steeb.png" width="50%">
+<div id="ROTUND-container">
+  <div id="ROTUND">
+    <img src=".\Steeb.png" width="50%">
+  </div>
 </div>
 
 <p>Here we can see a poisson in its natural environment, a rare phenomenon.</p>
